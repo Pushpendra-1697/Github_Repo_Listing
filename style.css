@@ -12,7 +12,6 @@ body {
     flex-direction: column;
 }
 
-
 .loader {
     border: 4px solid #f3f3f3;
     border-radius: 50%;
@@ -106,6 +105,64 @@ body {
     gap: 10px;
     align-items: center;
 }
-#searchBar{
+
+#searchBar {
     margin-top: 40px;
+}
+
+#user-box input,
+#searchBar input {
+    outline: none;
+    font-size: 19px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#user-box label,
+#searchBar label {
+    font-size: 20px;
+}
+
+#user-box button {
+    font-size: 18px;
+    padding: 8px 5px;
+    border-radius: 5px;
+    border: none;
+    background: #3498db;
+    color: white;
+}
+
+@media (max-width: 650px) {
+
+    #user-box label,
+    #searchBar label {
+        font-size: 17px;
+    }
+
+    #user-box input,
+    #searchBar input {
+        font-size: 15px;
+    }
+
+    #user-box button {
+        font-size: 15px;
+    }
+
+    #repositories {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .user-details {
+        flex-direction: column;
+        padding: 10px 0px;
+        gap: 30px;
+    }
+
+    .topics {
+        gap: 4px;
+    }
+
+    .topics span {
+        padding: 6px 3px;
+    }
 }
