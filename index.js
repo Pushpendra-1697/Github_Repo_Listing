@@ -68,6 +68,7 @@ async function fetchUserInfo() {
 };
 async function fetchRepos() {
     document.querySelector('.perPage-box').style.display = 'block';
+    document.querySelector('#pagination-container').style.display = 'block';
     const perPage = document.getElementById('perPage').value;
 
     try {
@@ -97,7 +98,12 @@ const renderRepos = (repos) => {
             const topicPara = document.createElement('span');
             if (index > 3) return;
             if (index === 3) {
-                topicPara.innerText = `${topic} ${topics.length - 4}+`;
+                const remainingTopicLength = topics.length - 4;
+                if (remainingTopicLength > 0) {
+                    topicPara.innerText = `${topic} ${remainingTopicLength}+`;
+                } else {
+                    topicPara.innerText = `${topic}`;
+                }
             } else {
                 topicPara.innerText = topic;
             }

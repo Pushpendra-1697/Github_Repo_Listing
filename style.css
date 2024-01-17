@@ -124,6 +124,10 @@ body {
     font-size: 20px;
 }
 
+.perPage-box {
+    margin-top: 30px;
+}
+
 #user-box button {
     font-size: 18px;
     padding: 8px 5px;
