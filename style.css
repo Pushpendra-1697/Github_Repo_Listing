@@ -20,3 +20,21 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+#repositories{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+}
+#repositories>div{
+    border: 1px solid black;
+}
+.topics{
+    display: flex;
+    gap: 7px;
+}
+.topics span {
+    color: white;
+    background: rgb(104, 104, 234);
+    padding: 4px 3px;
+    border-radius: 3px;
+}
