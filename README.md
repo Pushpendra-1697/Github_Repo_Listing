@@ -19,12 +19,15 @@ The GitHub Repositories Explorer is a web application designed to help users exp
 ```
 
 ## How to run locally
+- On Windows
 ```bash
-    start index.html       ---->     On Windows
+    start index.html
 ```
+- On macOS
 ```bash
-    open index.html       ----->     On macOS
+    open index.html   
 ```
+- On Linux
 ```bash
-    xdg-open index.html   ----->     On Linux
+    xdg-open index.html
 ```    
