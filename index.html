@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- Fetch User information by entering their username -->
     <div>
         <label for="username">Enter Github username:</label>
         <input type="text" id="username" placeholder="Enter username">
@@ -21,6 +22,12 @@
     <div class="github"></div>
     <!-- Loader indicator -->
     <div id="loader" class="loader" style="display: none;"></div>
+
+    <!-- Search bar to filter the repositories -->
+    <div id="searchBar" style="display: none;">
+        <label for="search">Search repositories:</label>
+        <input type="text" id="search" oninput="filterRepositories()" placeholder="Type here...">
+    </div>
     <!-- All repositories for any user comes here -->
     <div id="repositories"></div>
 </body>

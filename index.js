@@ -2,6 +2,7 @@ const repositoriesElement = document.getElementById('repositories');
 const loaderElement = document.getElementById('loader');
 const userDetails = document.querySelector('.user-details');
 const github = document.querySelector('.github');
+const searchBarElement = document.querySelector('#searchBar');
 
 async function fetchUserInfo() {
     const username = document.getElementById('username').value;
@@ -13,8 +14,6 @@ async function fetchUserInfo() {
         loaderElement.style.display = 'block';
         const response = await fetch(`https://api.github.com/users/${username}`);
         const userInfo = await response.json();
-
-        console.log(userInfo);
 
         loaderElement.style.display = 'none';
         if (userInfo.message === 'Not Found') {
@@ -70,6 +69,7 @@ async function fetchRepos(repos_url) {
         let repos = await fetch(`${repos_url}?per_page=10`);
         repos = await repos.json();
         renderRepos(repos);
+        searchBarElement.style.display = 'block';
     } catch (error) {
         console.error('Error fetching repositories:', error);
         alert('Error fetching repositories. Please check the console for details.');
@@ -80,6 +80,7 @@ const renderRepos = (repos) => {
     repositoriesElement.innerHTML = '';
     repos && repos.map(({ topics, name, description }) => {
         let repoContainer = document.createElement('div');
+        repoContainer.className = 'repository';
         let nameOfRepo = document.createElement('h2');
         nameOfRepo.innerText = name;
         nameOfRepo.style.color = 'rgb(104, 104, 234)'
@@ -101,4 +102,19 @@ const renderRepos = (repos) => {
         repoContainer.append(nameOfRepo, descOfRepo, topicsContainer);
         repositoriesElement.append(repoContainer);
     });
+};
+
+function filterRepositories() {
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+    const repositories = document.getElementsByClassName('repository');
+
+    for (const repository of repositories) {
+        const repositoryName = repository.textContent.toLowerCase();
+
+        if (repositoryName.includes(searchTerm)) {
+            repository.style.display = 'block';
+        } else {
+            repository.style.display = 'none';
+        }
+    }
 };
