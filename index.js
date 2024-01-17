@@ -3,9 +3,8 @@ const loaderElement = document.getElementById('loader');
 const userDetails = document.querySelector('.user-details');
 const github = document.querySelector('.github');
 const searchBarElement = document.querySelector('#searchBar');
-const paginationContainer = document.querySelector('#pagination-container');
 
-let repos_url;
+let repos_url, currentPage = 1;
 async function fetchUserInfo() {
     const username = document.getElementById('username').value;
     userDetails.innerHTML = null;
@@ -70,28 +69,16 @@ async function fetchUserInfo() {
 async function fetchRepos() {
     document.querySelector('.perPage-box').style.display = 'block';
     const perPage = document.getElementById('perPage').value;
-    console.log(perPage);
+
     try {
-        let repos = await fetch(`${repos_url}?per_page=${perPage}`);
+        let repos = await fetch(`${repos_url}?per_page=${perPage}&page=${currentPage}`);
         repos = await repos.json();
         renderRepos(repos);
-        appendPagination(repos.length);
         searchBarElement.style.display = 'block';
     } catch (error) {
         console.error('Error fetching repositories:', error);
         alert('Error fetching repositories. Please check the console for details.');
     }
-};
-function appendPagination(noOfRepos) {
-//     paginationContainer.innerHTML = null;
-//     let noOfButtons = Math.ceil(noOfRepos / 10);
-//     console.log(noOfButtons);
-//     for (let i = 1; i <= noOfButtons; i++) {
-//         let button = document.createElement('button');
-//         button.innerText = i;
-
-//         paginationContainer.append(button);
-//     }
 };
 
 const renderRepos = (repos) => {
@@ -135,4 +122,29 @@ function filterRepositories() {
             repository.style.display = 'none';
         }
     }
+};
+
+function previousPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        document.getElementById('currentPage').textContent = currentPage;
+        fetchRepos();
+    }
+    // Disable "Previous" button when on the first page
+    document.getElementById('previousButton').disabled = (currentPage === 1);
+    document.getElementById('nextButton').disabled = false;
+};
+
+function nextPage() {
+    currentPage++;
+    document.getElementById('currentPage').textContent = currentPage;
+    fetchRepos();
+    // Check if it's the last page and disable "Next" button
+    const perPage = document.getElementById('perPage').value;
+    const repositoriesCount = document.getElementById('repositories');
+    if (repositoriesCount < perPage) {
+        document.getElementById('nextButton').disabled = true;
+    }
+    // Enable "Previous" button when moving to the next page
+    document.getElementById('previousButton').disabled = false;
 };

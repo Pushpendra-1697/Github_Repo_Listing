@@ -44,7 +44,11 @@
     <!-- All repositories for any user comes here -->
     <div id="repositories"></div>
     <!-- Pagination -->
-    <div id="pagination-container"></div>
+    <div id="pagination-container">
+        <button id="previousButton" onclick="previousPage()" disabled>Previous</button>
+        <span id="currentPage">1</span>
+        <button id="nextButton" onclick="nextPage()">Next</button>
+    </div>
 </body>
 
 </html>

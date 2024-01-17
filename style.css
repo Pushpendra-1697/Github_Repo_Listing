@@ -132,14 +132,33 @@ body {
     background: #3498db;
     color: white;
 }
-.search-perPage{
+
+.search-perPage {
     display: flex;
     align-items: center;
     gap: 20px;
 }
-.search-perPage select{
+
+.search-perPage select {
     font-size: 18px;
     padding: 2px;
+}
+
+#pagination-container {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#pagination-container button {
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0px 5px;
+}
+
+#currentPage {
+    font-size: 25px;
 }
 
 
@@ -176,10 +195,12 @@ body {
     .topics span {
         padding: 6px 3px;
     }
-    .search-perPage{
+
+    .search-perPage {
         flex-direction: column;
     }
-    .search-perPage select{
+
+    .search-perPage select {
         font-size: 16px;
     }
 }
