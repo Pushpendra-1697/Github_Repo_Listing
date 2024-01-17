@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github Repositories Listing</title>
     <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
-    <button>Click</button>
+    <label for="username">Enter Github username:</label>
+    <input type="text" id="username" placeholder="Enter username">
+    <button onclick="fetchRepositories()">Fetch Repositories</button>
+    <!-- Loader indicator -->
+    <div id="loader" class="loader" style="display: none;"></div>
+    <!-- All repositories comes here -->
+    <div id="repositories"></div>
 </body>
+
 </html>
 <script type="text/javascript" src="./index.js"></script>
