@@ -3,7 +3,9 @@ const loaderElement = document.getElementById('loader');
 const userDetails = document.querySelector('.user-details');
 const github = document.querySelector('.github');
 const searchBarElement = document.querySelector('#searchBar');
+const paginationContainer = document.querySelector('#pagination-container');
 
+let repos_url;
 async function fetchUserInfo() {
     const username = document.getElementById('username').value;
     userDetails.innerHTML = null;
@@ -56,7 +58,8 @@ async function fetchUserInfo() {
 
         github.append(githubLinkIcon, githubState);
 
-        fetchRepos(userInfo.repos_url);
+        repos_url = userInfo.repos_url;
+        fetchRepos();
     } catch (error) {
         console.error('Error fetching User Details:', error);
         alert('Error fetching User Details. Please check the console for details.');
@@ -64,16 +67,31 @@ async function fetchUserInfo() {
         loaderElement.style.display = 'none';
     }
 };
-async function fetchRepos(repos_url) {
+async function fetchRepos() {
+    document.querySelector('.perPage-box').style.display = 'block';
+    const perPage = document.getElementById('perPage').value;
+    console.log(perPage);
     try {
-        let repos = await fetch(`${repos_url}?per_page=10`);
+        let repos = await fetch(`${repos_url}?per_page=${perPage}`);
         repos = await repos.json();
         renderRepos(repos);
+        appendPagination(repos.length);
         searchBarElement.style.display = 'block';
     } catch (error) {
         console.error('Error fetching repositories:', error);
         alert('Error fetching repositories. Please check the console for details.');
     }
+};
+function appendPagination(noOfRepos) {
+//     paginationContainer.innerHTML = null;
+//     let noOfButtons = Math.ceil(noOfRepos / 10);
+//     console.log(noOfButtons);
+//     for (let i = 1; i <= noOfButtons; i++) {
+//         let button = document.createElement('button');
+//         button.innerText = i;
+
+//         paginationContainer.append(button);
+//     }
 };
 
 const renderRepos = (repos) => {
