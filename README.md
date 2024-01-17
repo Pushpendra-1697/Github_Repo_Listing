@@ -1,6 +1,7 @@
 # Github_Repo_Listing
 
 ## Overview
+The GitHub Repositories Explorer is a web application designed to help users explore and view public repositories for a specified GitHub user. The application leverages the GitHub API to retrieve repository data and provides an interactive and user-friendly interface. It incorporates server-side pagination, loader indicators for a seamless experience, and an optional search bar for repository filtering.
 
 ## Assumptions
 
@@ -12,6 +13,7 @@
 - Disable "Previous" button when on the first page
 
 ## hosted Web App Link
+https://github-repositories-listing-view.netlify.app/
 
 ## How to run locally
 - start index.html ############ On Windows
