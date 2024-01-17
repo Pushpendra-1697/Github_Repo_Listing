@@ -12,10 +12,19 @@ The GitHub Repositories Explorer is a web application designed to help users exp
 - In pagination default page limit = 10 and page_number = 1 considered
 - Disable "Previous" button when on the first page
 
-## hosted Web App Link
-https://github-repositories-listing-view.netlify.app/
+## Hosted Web App Link on netlify
+
+```bash
+    https://github-repositories-listing-view.netlify.app/
+```
 
 ## How to run locally
-- start index.html ############ On Windows
-- open index.html   ############ On macOS
-- xdg-open index.html   ############ On Linux
+```bash
+    start index.html       ---->     On Windows
+```
+```bash
+    open index.html       ----->     On macOS
+```
+```bash
+    xdg-open index.html   ----->     On Linux
+```    
